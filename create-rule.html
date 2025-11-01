@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H3 Estimated Delivery</title>
+    <!-- shopify polaris CDN -->
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <s-page>
+        <s-section>
+
+            <div class="pb-2">
+                <s-box padding="none none base none">
+                    <s-button variant="secondary" icon="arrow-left">Back</s-button>
+                </s-box>
+            </div>
+
+            <form>
+                <div class="billing-container">
+                    <s-text-field label="Title" value="" placeholder="Enter title"></s-text-field>
+                    <s-select label="Status">
+                        <s-option value="active" selected>Active</s-option>
+                        <s-option value="inactive">Inactive</s-option>
+                    </s-select>
+                    <s-text-field label="Label" value="" placeholder="Enter label"></s-text-field>
+                    <s-text-field label="Text" value="" placeholder="Enter text"></s-text-field>
+                    <s-number-field label="Delivery days" placeholder="Days" step="1" min="1"
+                        max="100"></s-number-field>
+                    <s-number-field label="Estimate days delay (optional)" details="if you want to show delay days"
+                        placeholder="Delay days" step="1" min="1" max="100"></s-number-field>
+                    <div>
+                        <s-text-field id="include-tags-input" label="Include tags" value="" placeholder="Add tag"
+                            details="Type a tag and press Enter"></s-text-field>
+                        <s-stack id="include-tags-stack" direction="inline" gap="base" padding="base none none none">
+                        </s-stack>
+                    </div>
+                    <div>
+                        <s-text-field id="exclude-tags-input" label="Exclude tags" value="" placeholder="Add tag"
+                            details="Type a tag and press Enter"></s-text-field>
+                        <s-stack id="exclude-tags-stack" direction="inline" gap="base" padding="base none none none">
+                        </s-stack>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <s-stack alignItems="end">
+                        <s-button-group>
+                            <s-button slot="primary-action" variant="primary">Add Rule</s-button>
+                        </s-button-group>
+                    </s-stack>
+                </div>
+            </form>
+        </s-section>
+    </s-page>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const includeTagsInput = document.getElementById('include-tags-input');
+            const includeTagsStack = document.getElementById('include-tags-stack');
+            const excludeTagsInput = document.getElementById('exclude-tags-input');
+            const excludeTagsStack = document.getElementById('exclude-tags-stack');
+
+            const handleAddTag = (e, input, stack) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const tagText = input.value.trim();
+                    if (tagText) {
+                        const chip = document.createElement('s-chip');
+                        chip.innerHTML = `
+                            <div class="flex gap-2 items-center">
+                                ${tagText}
+                                <span class="cursor-pointer remove-tag">
+                                    <s-icon type="x" size="small"></s-icon>
+                                </span>
+                            </div>
+                        `;
+                        stack.appendChild(chip);
+                        input.value = '';
+
+                        chip.querySelector('.remove-tag').addEventListener('click', () => {
+                            chip.remove();
+                        });
+                    }
+                }
+            };
+
+            includeTagsInput.addEventListener('keydown', (e) => handleAddTag(e, includeTagsInput, includeTagsStack));
+            excludeTagsInput.addEventListener('keydown', (e) => handleAddTag(e, excludeTagsInput, excludeTagsStack));
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && document.activeElement !== includeTagsInput && document.activeElement !== excludeTagsInput) {
+                    //- Here you can handle form submission if needed
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

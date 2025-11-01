@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H3 Estimated Delivery</title>
+    <!-- shopify polaris CDN -->
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <s-page>
+        <s-section>
+            <div class="flex items-center flex-wrap justify-between gap-3">
+                <s-heading>Thank You for choosing this app</s-heading>
+                <s-button variant="primary" icon="phone">Instant Support</s-button>
+            </div>
+            <div class="pt-3">
+                <s-paragraph>
+                    <s-text color="subdued">
+                        If you have any questions or need assistance, feel free to contact us at <s-link
+                            href="mailto:info@h3techs.com">info@h3techs.com</s-link> or via
+                        WhatsApp at <s-link href="tel:+13464719190">+1 346 471 9190</s-link>.
+                    </s-text>
+                </s-paragraph>
+            </div>
+        </s-section>
+        <s-section heading="Quick Setup">
+            <s-stack gap="base">
+                <div class="accordion-item">
+                    <s-clickable padding="base" border="base" borderRadius="base">
+                        <div class="accordion-header flex items-center justify-between">
+                            <s-text type="strong">1. Go to Theme Customization</s-text>
+                            <s-icon type="chevron-up"></s-icon>
+                        </div>
+                        <div class="accordion-content pt-2">
+                            <s-stack gap="small">
+                                <s-paragraph>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </s-paragraph>
+                                <s-button>Button</s-button>
+                            </s-stack>
+                        </div>
+                    </s-clickable>
+                </div>
+                <div class="accordion-item">
+                    <s-clickable padding="base" border="base" borderRadius="base">
+                        <div class="accordion-header flex items-center justify-between">
+                            <s-text type="strong">2. Default Product Page</s-text>
+                            <s-icon type="chevron-up"></s-icon>
+                        </div>
+                        <div class="accordion-content pt-2">
+                            <s-stack gap="small">
+                                <s-paragraph>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </s-paragraph>
+                                <s-button>Button</s-button>
+                            </s-stack>
+                        </div>
+                    </s-clickable>
+                </div>
+                <div class="accordion-item">
+                    <s-clickable padding="base" border="base" borderRadius="base">
+                        <div class="accordion-header flex items-center justify-between">
+                            <s-text type="strong">3. Add Block</s-text>
+                            <s-icon type="chevron-up"></s-icon>
+                        </div>
+                        <div class="accordion-content pt-2">
+                            <s-stack gap="small">
+                                <s-paragraph>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </s-paragraph>
+                                <s-button>Button</s-button>
+                            </s-stack>
+                        </div>
+                    </s-clickable>
+                </div>
+                <div class="accordion-item">
+                    <s-clickable padding="base" border="base" borderRadius="base">
+                        <div class="accordion-header flex items-center justify-between">
+                            <s-text type="strong">4. Estimate Delivery</s-text>
+                            <s-icon type="chevron-up"></s-icon>
+                        </div>
+                        <div class="accordion-content pt-2">
+                            <s-stack gap="small">
+                                <s-paragraph>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </s-paragraph>
+                                <s-button>Button</s-button>
+                            </s-stack>
+                        </div>
+                    </s-clickable>
+                </div>
+            </s-stack>
+        </s-section>
+        <s-section heading="Need Help?">
+            <div class="products-container">
+                <div>
+                    <s-clickable padding="base" borderRadius="base" border="base">
+                        <div class="flex gap-3 items-center">
+                            <div>
+                                <s-thumbnail alt="Message Icon" src="./assets/images/icons/01.png"></s-thumbnail>
+                            </div>
+                            <div>
+                                <s-heading>Send us a message</s-heading>
+                                <s-paragraph>
+                                    Have a question? Our amazing support team is waiting to help.
+                                </s-paragraph>
+                            </div>
+                        </div>
+                    </s-clickable>
+                </div>
+                <div>
+                    <s-clickable padding="base" borderRadius="base" border="base">
+                        <div class="flex gap-3 items-center">
+                            <div>
+                                <s-thumbnail alt="Demo Icon" src="./assets/images/icons/02.png"></s-thumbnail>
+                            </div>
+                            <div>
+                                <s-heading>Get a demo</s-heading>
+                                <s-paragraph>
+                                    Get your quesitons answered on a live 1:1 demo.
+                                </s-paragraph>
+                            </div>
+                        </div>
+                    </s-clickable>
+                </div>
+            </div>
+        </s-section>
+    </s-page>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            // Close all accordion items by default
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            document.querySelectorAll('.accordion-header s-icon').forEach(icon => {
+                icon.setAttribute('type', 'chevron-down');
+            });
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionIcon = header.querySelector('s-icon');
+                    const isOpen = accordionContent.style.display === 'block';
+
+                    // Close all other accordion items
+                    document.querySelectorAll('.accordion-content').forEach(content => {
+                        if (content !== accordionContent) {
+                            content.style.display = 'none';
+                            const otherIcon = content.previousElementSibling.querySelector('s-icon');
+                            if (otherIcon) {
+                                otherIcon.setAttribute('type', 'chevron-down');
+                            }
+                        }
+                    });
+
+                    // Toggle the clicked accordion item
+                    if (isOpen) {
+                        accordionContent.style.display = 'none';
+                        accordionIcon.setAttribute('type', 'chevron-down');
+                    } else {
+                        accordionContent.style.display = 'block';
+                        accordionIcon.setAttribute('type', 'chevron-up');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

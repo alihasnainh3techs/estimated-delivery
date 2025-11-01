@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H3 Estimated Delivery</title>
+    <!-- shopify polaris CDN -->
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <s-page>
+        <s-section>
+            <div class="pb-3">
+                <s-stack direction="inline" gap="base" justifyContent="end">
+                    <s-button variant="primary">Create Rule</s-button>
+                    <s-button variant="secondary" commandFor="blockSettingModal">Block Setting</s-button>
+                </s-stack>
+            </div>
+            <s-modal id="blockSettingModal" heading="Block Setting">
+                <s-stack gap="base">
+                    <s-text-field label="Main heading" value="STANDARD SHIPPING"
+                        placeholder="Enter main heading"></s-text-field>
+                    <s-text-field label="Subtitle" value="Estimate Shipping Date:"
+                        placeholder="Enter subtitle"></s-text-field>
+                    <s-select label="Date format">
+                        <s-option value="01-01-2023" selected>01-01-2023</s-option>
+                        <s-option value="01-jan-23">01-Jan-23</s-option>
+                        <s-option value="01-jan">01-Jan</s-option>
+                    </s-select>
+                </s-stack>
+                <s-button slot="secondary-actions" commandFor="blockSettingModal" command="--hide">
+                    Close
+                </s-button>
+                <s-button slot="primary-action" variant="primary" commandFor="blockSettingModal" command="--hide">
+                    Save
+                </s-button>
+            </s-modal>
+            <div class="table-container">
+
+                <s-table class="table" paginate hasPreviousPage hasNextPage>
+                    <s-table-header-row>
+                        <s-table-header>Title</s-table-header>
+                        <s-table-header>Label</s-table-header>
+                        <s-table-header>Text</s-table-header>
+                        <s-table-header>Estimate Days</s-table-header>
+                        <s-table-header>Estimate Days Delay</s-table-header>
+                        <s-table-header>Include Tags</s-table-header>
+                        <s-table-header>Exclude Tags</s-table-header>
+                        <s-table-header>Status</s-table-header>
+                        <s-table-header>Active</s-table-header>
+                    </s-table-header-row>
+                    <s-table-body>
+                        <s-table-row>
+                            <s-table-cell>Urgent Review Rule</s-table-cell>
+                            <s-table-cell>High Prio</s-table-cell>
+                            <s-table-cell>Check for critical errors.</s-table-cell>
+                            <s-table-cell>2</s-table-cell>
+                            <s-table-cell>0</s-table-cell>
+                            <s-table-cell>
+                                <s-stack direction="inline" gap="base">
+                                    <s-chip>urgent</s-chip>
+                                    <s-chip>critical</s-chip>
+                                </s-stack>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-stack direction="inline" gap="base">
+                                    <s-chip>done</s-chip>
+                                    <s-chip>archive</s-chip>
+                                </s-stack>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-badge tone="success">Active</s-badge>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-button icon="delete" variant="primary" tone="critical"
+                                    accessibilityLabel="Delete Rule"></s-button>
+                            </s-table-cell>
+                        </s-table-row>
+                        <s-table-row>
+                            <s-table-cell>Standard Approval</s-table-cell>
+                            <s-table-cell>Level 1</s-table-cell>
+                            <s-table-cell>Standard document approval process.</s-table-cell>
+                            <s-table-cell>5</s-table-cell>
+                            <s-table-cell>2</s-table-cell>
+                            <s-table-cell>
+                                <s-stack direction="inline" gap="base">
+                                    <s-chip>draft</s-chip>
+                                    <s-chip>pending</s-chip>
+                                </s-stack>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-stack direction="inline" gap="base">
+                                    <s-chip>high-prio</s-chip>
+                                </s-stack>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-badge tone="success">Active</s-badge>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-button icon="delete" variant="primary" tone="critical"
+                                    accessibilityLabel="Delete Rule"></s-button>
+                            </s-table-cell>
+                        </s-table-row>
+                        <s-table-row>
+                            <s-table-cell>Final Release Check</s-table-cell>
+                            <s-table-cell>Release</s-table-cell>
+                            <s-table-cell>Final quality assurance before launch.</s-table-cell>
+                            <s-table-cell>1</s-table-cell>
+                            <s-table-cell>0</s-table-cell>
+                            <s-table-cell>
+                                <s-stack direction="inline" gap="base">
+                                    <s-chip>ready-to-go</s-chip>
+                                </s-stack>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-stack direction="inline" gap="base">
+                                    <s-chip>bug</s-chip>
+                                    <s-chip>rework</s-chip>
+                                </s-stack>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-badge tone="info">In Active</s-badge>
+                            </s-table-cell>
+                            <s-table-cell>
+                                <s-button icon="delete" variant="primary" tone="critical"
+                                    accessibilityLabel="Delete Rule"></s-button>
+                            </s-table-cell>
+                        </s-table-row>
+                    </s-table-body>
+                </s-table>
+            </div>
+        </s-section>
+    </s-page>
+</body>
+
+</html>

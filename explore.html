@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H3 Estimated Delivery</title>
+    <!-- shopify polaris CDN -->
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <s-page>
+        <s-section heading="Explore More Apps">
+            <div id="productsContainer" class="products-container">
+
+            </div>
+        </s-section>
+    </s-page>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                title: "Branded SMS Pakistan",
+                subtitle: "Free plan available",
+                description: "Automated SMS or Call with More Customization Options to Improve Efficiency on Every Step You Take",
+                image: "./assets/images/01.png"
+            },
+            {
+                id: 2,
+                title: "Robo Calls PK",
+                subtitle: "From $10/month",
+                description: "Send automated order confirmation calls to your customers within Pakistan.",
+                image: "./assets/images/02.png"
+            },
+            {
+                id: 3,
+                title: "WhatsApp Order Confirmation",
+                subtitle: "Free plan available",
+                description: "Effortlessly verify orders at the time.",
+                image: "./assets/images/03.png"
+            },
+            {
+                id: 4,
+                title: "WhatsApp Order Notification",
+                subtitle: "From $10/month. Free trial available.",
+                description: "Send real-time WhatsApp order notifications.",
+                image: "./assets/images/04.png"
+            },
+            {
+                id: 5,
+                title: "Order Tracking Notifier",
+                subtitle: "From $30/month. Free trial available.",
+                description: "Allow your customers to effortlessly track their orders using either their tracking number or phone.",
+                image: "./assets/images/05.png"
+            },
+            {
+                id: 6,
+                title: "Order Feedback",
+                subtitle: "Free plan available. Free trial available.",
+                description: "Keep customers happy & gear up sales. Collect feedback on orders with ease.",
+                image: "./assets/images/06.png"
+            },
+            {
+                id: 7,
+                title: "Back In Stock Alerts",
+                subtitle: "Free plan available",
+                description: "Notify customers via Email, SMS, or push notifications when desired products are back in stock.",
+                image: "./assets/images/07.png"
+            },
+            {
+                id: 8,
+                title: "Customer Revive Notify",
+                subtitle: "Free plan available",
+                description: "Awaken previous customers by sending them discounts and greeting notifications.",
+                image: "./assets/images/08.png"
+            },
+            {
+                id: 9,
+                title: "Estimated Delivery",
+                subtitle: "Free plan available",
+                description: "Helps you to show the estimated delivery of your product.",
+                image: "./assets/images/09.png"
+            },
+            {
+                id: 10,
+                title: "Orders Edit",
+                subtitle: "From $10/month",
+                description: "Simplify order edits for an organized store, an all-in-one app for quick order editing.",
+                image: "./assets/images/10.png"
+            },
+            {
+                id: 11,
+                title: "RoboCall Biz Pakistan",
+                subtitle: "$10/month. Free trial available.",
+                description: "Automated order confirmation robocall in Pakistan.",
+                image: "./assets/images/11.png"
+            },
+            {
+                id: 12,
+                title: "Inventory Syncify",
+                subtitle: "$10/month. Free trial available.",
+                description: "Seamlessly Sync Inventory Across Multiple Stores in Real Time.",
+                image: "./assets/images/12.png"
+            },
+            {
+                id: 13,
+                title: "Complaint Guru",
+                subtitle: "$20/month. Free trial available.",
+                description: "Enhance customer support with realtime complaint management.",
+                image: "./assets/images/13.png"
+            },
+            {
+                id: 14,
+                title: "Payment Audit",
+                subtitle: "$10/month. Free trial available.",
+                description: "Optimize Financial Accuracy with Smart Payment Auditing.",
+                image: "./assets/images/14.png"
+            },
+            {
+                id: 15,
+                title: "Catalog Forge",
+                subtitle: "$15/month. Free trial available.",
+                description: "Simplify Catalog Creation.",
+                image: "./assets/images/15.jpeg"
+            }
+        ];
+
+        const productsContainer = document.querySelector("#productsContainer");
+
+        const productsHTML = products.map((pd) => {
+            return (`
+            <s-box padding="base" border="base" borderRadius="base">
+                <div class="flex flex-nowrap items-start gap-3">
+                    <div>
+                        <s-thumbnail alt=${pd.title} src=${pd.image}></s-thumbnail>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex flex-nowrap items-start justify-between">
+                            <div>
+                                <s-heading>${pd.title}</s-heading>
+                                <s-paragraph>
+                                    <s-text>
+                                        ${pd.subtitle}
+                                    </s-text>
+                                </s-paragraph>    
+                            </div>
+                            <div>
+                                <s-button variant="primary" icon="download">Install</s-button>
+                            </div>
+                        </div>
+                        <s-paragraph>
+                            <s-text color="subdued">
+                                ${pd.description}
+                            </s-text>
+                        </s-paragraph>
+                    </div>
+                </div>
+            </s-box>
+            `);
+        }).join("");
+
+        productsContainer.innerHTML += productsHTML;
+
+    </script>
+</body>
+
+</html>

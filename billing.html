@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H3 Estimated Delivery</title>
+    <!-- shopify polaris CDN -->
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <s-page>
+
+        <s-banner tone="auto" dismissible>
+            <s-paragraph>
+                <s-text type="strong">Note: </s-text>
+                <s-text>If you exceed the message credit limit in any plan, additional usage charges will apply,
+                    including during the trial period.</s-text>
+            </s-paragraph>
+        </s-banner>
+
+        <s-section>
+            <div class="flex justify-between items-center flex-wrap gap-3">
+                <s-heading>
+                    <div class="flex gap-2 flex-nowrap items-center">
+                        Current Plan
+                        <s-badge tone="success">Free</s-badge>
+                    </div>
+                </s-heading>
+                <s-button variant="primary">Upgrade</s-button>
+            </div>
+            <div class="pt-3">
+                <s-paragraph>
+                    You are currently on the Free plan. Upgrade for unlimited rules and enhanced support.
+                </s-paragraph>
+            </div>
+        </s-section>
+
+        <s-section heading="Plans">
+            <div class="billing-container">
+                <div class="mx-auto" style="max-width: 230px; width: 100%;">
+                    <s-box border="base" borderRadius="base" overflow="hidden" padding="none base">
+                        <div class="pricing-card">
+                            <s-stack gap="base" alignItems="center">
+                                <div class="flex justify-center"
+                                    style="background-color: #303030; width: 100%; padding: 10px 20px; color: white;">
+                                    <strong>FREE</strong>
+                                </div>
+                                <s-heading>
+                                    <sup>$</sup> 0
+                                </s-heading>
+                                <s-paragraph>
+                                    Create Only 1 Rule
+                                </s-paragraph>
+
+                                <s-paragraph>
+                                    Email Support
+                                </s-paragraph>
+
+                                <s-paragraph>
+                                    24 / 7 Support
+                                </s-paragraph>
+                                <s-button variant="primary">Actived</s-button>
+                            </s-stack>
+                        </div>
+                    </s-box>
+                </div>
+                <div class="mx-auto" style="max-width: 230px; width: 100%;">
+                    <s-box border="base" borderRadius="base" overflow="hidden" padding="none base">
+                        <div class="pricing-card">
+                            <s-stack gap="base" alignItems="center">
+                                <div class="flex justify-center"
+                                    style="background-color:  #303030; width: 100%; padding: 10px 20px; color: white;">
+                                    <strong>PREMIUM</strong>
+                                </div>
+                                <s-heading>
+                                    <sup>$</sup> 8
+                                    <sub>/ Month</sub>
+                                </s-heading>
+                                <s-paragraph>
+                                    Create Unlimited Rule
+                                </s-paragraph>
+
+                                <s-paragraph>
+                                    Email Support
+                                </s-paragraph>
+
+                                <s-paragraph>
+                                    24 / 7 Support
+                                </s-paragraph>
+
+                                <s-button variant="secondary">Choose Plan</s-button>
+                            </s-stack>
+                        </div>
+                    </s-box>
+                </div>
+            </div>
+        </s-section>
+    </s-page>
+
+</body>
+
+</html>

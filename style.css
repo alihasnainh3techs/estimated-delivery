@@ -1,0 +1,172 @@
+.flex {
+    display: flex;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-end {
+    justify-content: end;
+}
+
+.items-start {
+    align-items: start;
+}
+
+.gap-1 {
+    gap: 0.25rem !important;
+}
+
+.gap-2 {
+    gap: 0.5rem !important;
+}
+
+.gap-3 {
+    gap: 1rem !important;
+}
+
+.gap-4 {
+    gap: 1.5rem !important;
+}
+
+.gap-5 {
+    gap: 3rem !important;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.mx-auto {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.products-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width:768px) {
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.billing-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width:768px) {
+    .billing-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    display: table;
+    width: 100%;
+    min-width: 700px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.pt-1 {
+    padding-top: 0.25rem !important;
+}
+
+.pt-2 {
+    padding-top: 0.5rem !important;
+}
+
+.pt-3 {
+    padding-top: 1rem !important;
+}
+
+.pt-4 {
+    padding-top: 1.5rem !important;
+}
+
+.pt-5 {
+    padding-top: 3rem !important;
+}
+
+.pb-1 {
+    padding-bottom: 0.25rem !important;
+}
+
+.pb-2 {
+    padding-bottom: 0.5rem !important;
+}
+
+.pb-3 {
+    padding-bottom: 1rem !important;
+}
+
+.pb-4 {
+    padding-bottom: 1.5rem !important;
+}
+
+.pb-5 {
+    padding-bottom: 3rem !important;
+}
+
+.px-1 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pricing-card {
+    height: 260px;
+}
+
+@media screen and (max-width:440px) {
+    .pricing-card {
+        height: 285px;
+    }
+}
+
+.accordion-item {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accordion-content {
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion-item+.accordion-item {
+    margin-top: 8px;
+}
+
+.invisible {
+    visibility: hidden;
+}
