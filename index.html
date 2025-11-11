@@ -28,10 +28,26 @@
                 </s-paragraph>
             </div>
         </s-section>
+        <s-section>
+            <div class="flex justify-between items-center flex-wrap gap-3">
+                <s-heading>
+                    <div class="flex gap-2 flex-nowrap items-center">
+                        Current Plan
+                        <s-badge tone="success">Free</s-badge>
+                    </div>
+                </s-heading>
+                <s-button variant="primary">Upgrade</s-button>
+            </div>
+            <div class="pt-3">
+                <s-paragraph>
+                    You are currently on the Free plan. Upgrade for unlimited rules and enhanced support.
+                </s-paragraph>
+            </div>
+        </s-section>
         <s-section heading="Quick Setup">
             <s-stack gap="base">
                 <div class="accordion-item">
-                    <s-clickable padding="base" border="base" borderRadius="base">
+                    <s-clickable padding="base" border="base" borderRadius="base" background="subdued">
                         <div class="accordion-header flex items-center justify-between">
                             <s-text type="strong">1. Go to Theme Customization</s-text>
                             <s-icon type="chevron-up"></s-icon>
@@ -95,75 +111,116 @@
         <s-section heading="Need Help?">
             <div class="products-container">
                 <div>
-                    <s-clickable padding="base" borderRadius="base" border="base">
-                        <div class="flex gap-3 items-center">
-                            <div>
-                                <s-thumbnail alt="Message Icon" src="./assets/images/icons/01.png"></s-thumbnail>
+                    <div class="mb-3">
+                        <s-clickable padding="base" borderRadius="base" border="base">
+                            <div class="flex gap-3 items-center">
+                                <div>
+                                    <s-thumbnail alt="Message Icon" src="./assets/images/icons/01.png"></s-thumbnail>
+                                </div>
+                                <div>
+                                    <s-heading>Send us a message</s-heading>
+                                    <s-paragraph>
+                                        Have a question? Our amazing support team is waiting to help.
+                                    </s-paragraph>
+                                </div>
                             </div>
-                            <div>
-                                <s-heading>Send us a message</s-heading>
-                                <s-paragraph>
-                                    Have a question? Our amazing support team is waiting to help.
-                                </s-paragraph>
+                        </s-clickable>
+                    </div>
+                    <div>
+                        <s-clickable padding="base" borderRadius="base" border="base">
+                            <div class="flex gap-3 items-center">
+                                <div>
+                                    <s-thumbnail alt="Demo Icon" src="./assets/images/icons/02.png"></s-thumbnail>
+                                </div>
+                                <div>
+                                    <s-heading>Get a demo</s-heading>
+                                    <s-paragraph>
+                                        Get your quesitons answered on a live 1:1 demo.
+                                    </s-paragraph>
+                                </div>
                             </div>
-                        </div>
-                    </s-clickable>
+                        </s-clickable>
+                    </div>
                 </div>
                 <div>
-                    <s-clickable padding="base" borderRadius="base" border="base">
-                        <div class="flex gap-3 items-center">
-                            <div>
-                                <s-thumbnail alt="Demo Icon" src="./assets/images/icons/02.png"></s-thumbnail>
+                    <div class="mb-3">
+                        <s-clickable padding="base" borderRadius="base" border="base">
+                            <div class="flex gap-3 items-center">
+                                <div>
+                                    <s-thumbnail alt="Message Icon" src="./assets/images/icons/03.png"></s-thumbnail>
+                                </div>
+                                <div>
+                                    <s-heading>Gwen</s-heading>
+                                    <s-paragraph>
+                                        Customer Success Manager
+                                    </s-paragraph>
+                                </div>
                             </div>
-                            <div>
-                                <s-heading>Get a demo</s-heading>
-                                <s-paragraph>
-                                    Get your quesitons answered on a live 1:1 demo.
-                                </s-paragraph>
+                        </s-clickable>
+                    </div>
+                    <div>
+                        <s-clickable padding="base" borderRadius="base" border="base">
+                            <div class="flex gap-3 items-center">
+                                <div>
+                                    <s-thumbnail alt="Message Icon" src="./assets/images/icons/04.png"></s-thumbnail>
+                                </div>
+                                <div>
+                                    <s-heading>Derek</s-heading>
+                                    <s-paragraph>
+                                        Head of Department
+                                    </s-paragraph>
+                                </div>
                             </div>
-                        </div>
-                    </s-clickable>
+                        </s-clickable>
+                    </div>
                 </div>
             </div>
         </s-section>
     </s-page>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const accordionItems = document.querySelectorAll('.accordion-item');
             const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-            // Close all accordion items by default
-            document.querySelectorAll('.accordion-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            document.querySelectorAll('.accordion-header s-icon').forEach(icon => {
-                icon.setAttribute('type', 'chevron-down');
+            // By default, open the first accordion item and close the others.
+            accordionItems.forEach((item, index) => {
+                const content = item.querySelector('.accordion-content');
+                const icon = item.querySelector('.accordion-header s-icon');
+
+                if (index === 0) {
+                    content.style.display = 'block';
+                    icon.setAttribute('type', 'chevron-up');
+                } else {
+                    content.style.display = 'none';
+                    icon.setAttribute('type', 'chevron-down');
+                }
             });
 
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
-                    const accordionContent = header.nextElementSibling;
-                    const accordionIcon = header.querySelector('s-icon');
-                    const isOpen = accordionContent.style.display === 'block';
+                    const clickedItem = header.closest('.accordion-item');
+                    const clickedContent = clickedItem.querySelector('.accordion-content');
+                    const isAlreadyOpen = clickedContent.style.display === 'block';
 
-                    // Close all other accordion items
-                    document.querySelectorAll('.accordion-content').forEach(content => {
-                        if (content !== accordionContent) {
-                            content.style.display = 'none';
-                            const otherIcon = content.previousElementSibling.querySelector('s-icon');
-                            if (otherIcon) {
-                                otherIcon.setAttribute('type', 'chevron-down');
-                            }
-                        }
+                    // If the clicked item is already open, do nothing.
+                    if (isAlreadyOpen) {
+                        return;
+                    }
+
+                    // First, reset all accordion items.
+                    accordionItems.forEach(item => {
+                        // Close the content.
+                        item.querySelector('.accordion-content').style.display = 'none';
+                        // Update the icon.
+                        item.querySelector('.accordion-header s-icon').setAttribute('type', 'chevron-down');
+                        // Remove the background attribute from the s-clickable element.
+                        item.querySelector('s-clickable').removeAttribute('background');
                     });
 
-                    // Toggle the clicked accordion item
-                    if (isOpen) {
-                        accordionContent.style.display = 'none';
-                        accordionIcon.setAttribute('type', 'chevron-down');
-                    } else {
-                        accordionContent.style.display = 'block';
-                        accordionIcon.setAttribute('type', 'chevron-up');
-                    }
+                    // Now, open the clicked item.
+                    clickedContent.style.display = 'block';
+                    clickedItem.querySelector('.accordion-header s-icon').setAttribute('type', 'chevron-up');
+                    clickedItem.querySelector('s-clickable').setAttribute('background', 'subdued');
                 });
             });
         });

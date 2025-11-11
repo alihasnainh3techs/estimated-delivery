@@ -15,14 +15,6 @@
 
     <s-page>
 
-        <s-banner tone="auto" dismissible>
-            <s-paragraph>
-                <s-text type="strong">Note: </s-text>
-                <s-text>If you exceed the message credit limit in any plan, additional usage charges will apply,
-                    including during the trial period.</s-text>
-            </s-paragraph>
-        </s-banner>
-
         <s-section>
             <div class="flex justify-between items-center flex-wrap gap-3">
                 <s-heading>
@@ -41,18 +33,25 @@
         </s-section>
 
         <s-section heading="Plans">
-            <div class="billing-container">
-                <div class="mx-auto" style="max-width: 230px; width: 100%;">
-                    <s-box border="base" borderRadius="base" overflow="hidden" padding="none base">
-                        <div class="pricing-card">
-                            <s-stack gap="base" alignItems="center">
-                                <div class="flex justify-center"
-                                    style="background-color: #303030; width: 100%; padding: 10px 20px; color: white;">
-                                    <strong>FREE</strong>
-                                </div>
+            <s-stack gap="base">
+
+                <s-divider></s-divider>
+
+                <div class="billing-container">
+                    <div>
+                        <s-box border="base" borderRadius="base" overflow="hidden" padding="none">
+                            <div class="flex justify-center"
+                                style="background-color:  #303030; width: 100%; padding: 10px 0px; color: white;">
+                                <strong>FREE</strong>
+                            </div>
+                            <s-stack gap="base" padding="base">
                                 <s-heading>
                                     <sup>$</sup> 0
+                                    <sub class="invisible">/ Month</sub>
                                 </s-heading>
+
+                                <s-divider></s-divider>
+
                                 <s-paragraph>
                                     Create Only 1 Rule
                                 </s-paragraph>
@@ -66,21 +65,22 @@
                                 </s-paragraph>
                                 <s-button variant="primary">Actived</s-button>
                             </s-stack>
-                        </div>
-                    </s-box>
-                </div>
-                <div class="mx-auto" style="max-width: 230px; width: 100%;">
-                    <s-box border="base" borderRadius="base" overflow="hidden" padding="none base">
-                        <div class="pricing-card">
-                            <s-stack gap="base" alignItems="center">
-                                <div class="flex justify-center"
-                                    style="background-color:  #303030; width: 100%; padding: 10px 20px; color: white;">
-                                    <strong>PREMIUM</strong>
-                                </div>
+                        </s-box>
+                    </div>
+                    <div>
+                        <s-box border="base" borderRadius="base" overflow="hidden" padding="none">
+                            <div class="flex justify-center"
+                                style="background-color:  #303030; width: 100%; padding: 10px 0px; color: white;">
+                                <strong>PREMIUM</strong>
+                            </div>
+                            <s-stack gap="base" padding="base">
                                 <s-heading>
                                     <sup>$</sup> 8
                                     <sub>/ Month</sub>
                                 </s-heading>
+
+                                <s-divider></s-divider>
+
                                 <s-paragraph>
                                     Create Unlimited Rule
                                 </s-paragraph>
@@ -95,10 +95,22 @@
 
                                 <s-button variant="secondary">Choose Plan</s-button>
                             </s-stack>
-                        </div>
-                    </s-box>
+                        </s-box>
+                    </div>
                 </div>
-            </div>
+
+                <s-divider></s-divider>
+
+                <s-paragraph>
+                    <s-text color="subdued">
+                        <p style="text-align: center; margin: 0;">
+                            Cancel at any time | Trusted by top brands running on Shopify & Shopify Plus | 24*7 Live
+                            customer
+                            support.
+                        </p>
+                    </s-text>
+                </s-paragraph>
+            </s-stack>
         </s-section>
     </s-page>
 

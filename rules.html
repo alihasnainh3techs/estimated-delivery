@@ -15,10 +15,52 @@
     <s-page>
         <s-section>
             <div class="pb-3">
-                <s-stack direction="inline" gap="base" justifyContent="end">
-                    <s-button variant="primary">Create Rule</s-button>
-                    <s-button variant="secondary" commandFor="blockSettingModal">Block Setting</s-button>
-                </s-stack>
+                <div class="filter-container relative">
+                    <div>
+                        <s-stack direction="inline" gap="base" justifyContent="start">
+                            <s-button variant="primary">Create Rule</s-button>
+                            <s-button variant="secondary" commandFor="blockSettingModal">Block Setting</s-button>
+                        </s-stack>
+                    </div>
+                    <div>
+                        <s-stack direction="inline" gap="base" justifyContent="end">
+                            <s-button id="show-search-button" icon="search" accessibilityLabel="Search"
+                                interestFor="search-tooltip"></s-button>
+                            <s-tooltip id="search-tooltip">
+                                <s-text>Search</s-text>
+                            </s-tooltip>
+                            <s-button icon="sort" accessibilityLabel="Sort" interestFor="sort-tooltip"
+                                commandFor="sort-actions"></s-button>
+                            <s-tooltip id="sort-tooltip">
+                                <s-text>Sort</s-text>
+                            </s-tooltip>
+                            <s-popover id="sort-actions">
+                                <s-stack gap="none">
+                                    <s-box padding="small">
+                                        <s-choice-list label="Order by" name="Order by">
+                                            <s-choice value="product-title" selected>
+                                                A-Z
+                                            </s-choice>
+                                            <s-choice value="created">Z-A</s-choice>
+                                        </s-choice-list>
+                                    </s-box>
+                                </s-stack>
+                            </s-popover>
+                        </s-stack>
+                    </div>
+                    <div class="searchbar-container hidden">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="w-full">
+                                <s-search-field label="Search" labelAccessibilityVisibility="exclusive"
+                                    placeholder="Search..."></s-search-field>
+                            </div>
+                            <div class="flex gap-2">
+                                <s-button variant="primary">Search</s-button>
+                                <s-button id="cancel-search-button" variant="secondary">Cancel</s-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <s-modal id="blockSettingModal" heading="Block Setting">
                 <s-stack gap="base">
@@ -48,10 +90,8 @@
                         <s-table-header>Text</s-table-header>
                         <s-table-header>Estimate Days</s-table-header>
                         <s-table-header>Estimate Days Delay</s-table-header>
-                        <s-table-header>Include Tags</s-table-header>
-                        <s-table-header>Exclude Tags</s-table-header>
                         <s-table-header>Status</s-table-header>
-                        <s-table-header>Active</s-table-header>
+                        <s-table-header>Actions</s-table-header>
                     </s-table-header-row>
                     <s-table-body>
                         <s-table-row>
@@ -61,23 +101,86 @@
                             <s-table-cell>2</s-table-cell>
                             <s-table-cell>0</s-table-cell>
                             <s-table-cell>
-                                <s-stack direction="inline" gap="base">
-                                    <s-chip>urgent</s-chip>
-                                    <s-chip>critical</s-chip>
-                                </s-stack>
-                            </s-table-cell>
-                            <s-table-cell>
-                                <s-stack direction="inline" gap="base">
-                                    <s-chip>done</s-chip>
-                                    <s-chip>archive</s-chip>
-                                </s-stack>
-                            </s-table-cell>
-                            <s-table-cell>
                                 <s-badge tone="success">Active</s-badge>
                             </s-table-cell>
                             <s-table-cell>
-                                <s-button icon="delete" variant="primary" tone="critical"
-                                    accessibilityLabel="Delete Rule"></s-button>
+                                <s-button-group>
+                                    <s-button slot="secondary-actions" icon="view" accessibilityLabel="View Rule"
+                                        commandFor="viewRuleModal"></s-button>
+                                    <s-button slot="primary-action" variant="primary" tone="critical" icon="delete"
+                                        accessibilityLabel="Delete Rule" commandFor="deleteRuleModal"></s-button>
+                                </s-button-group>
+                                <s-modal id="viewRuleModal" heading="View rule">
+                                    <s-stack gap="base">
+                                        <s-paragraph>
+                                            <s-text type="strong">Title: </s-text>
+                                            <s-text>Urgent Review Rule</s-text>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-text type="strong">Label: </s-text>
+                                            <s-text>High Prio</s-text>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-text type="strong">Text: </s-text>
+                                            <s-text>Check for critical errors.</s-text>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-text type="strong">Estimate Days: </s-text>
+                                            <s-text>05</s-text>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-text type="strong">Estimate Days Delay: </s-text>
+                                            <s-text>02</s-text>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-stack gap="small" direction="inline">
+                                                <s-text type="strong">Status: </s-text>
+                                                <s-badge tone="success">Active</s-badge>
+                                            </s-stack>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-text type="strong">Created at: </s-text>
+                                            <s-text>19-03-2025 01:15:21 AM</s-text>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-stack gap="small" direction="inline">
+                                                <s-text type="strong">Include Tags: </s-text>
+                                                <s-stack gap="small" direction="inline">
+                                                    <s-chip>urgent</s-chip>
+                                                    <s-chip>critical</s-chip>
+                                                </s-stack>
+                                            </s-stack>
+                                        </s-paragraph>
+                                        <s-paragraph>
+                                            <s-stack gap="small" direction="inline">
+                                                <s-text type="strong">Exclude Tags: </s-text>
+                                                <s-stack gap="small" direction="inline">
+                                                    <s-chip>done</s-chip>
+                                                    <s-chip>archive</s-chip>
+                                                </s-stack>
+                                            </s-stack>
+                                        </s-paragraph>
+                                    </s-stack>
+                                    <s-button slot="secondary-actions" variant="secondary" commandFor="viewRuleModal"
+                                        command="--hide">
+                                        Close
+                                    </s-button>
+                                </s-modal>
+                                <s-modal id="deleteRuleModal" heading="Delete rule?">
+                                    <s-stack gap="base">
+                                        <s-text>Are you sure you want to delete rule "Standard Approval"?</s-text>
+                                        <s-text tone="caution">This action cannot be undone.</s-text>
+                                    </s-stack>
+
+                                    <s-button slot="primary-action" variant="primary" tone="critical"
+                                        commandFor="deleteRuleModal" command="--hide">
+                                        Delete rule
+                                    </s-button>
+                                    <s-button slot="secondary-actions" variant="secondary" commandFor="deleteRuleModal"
+                                        command="--hide">
+                                        Cancel
+                                    </s-button>
+                                </s-modal>
                             </s-table-cell>
                         </s-table-row>
                         <s-table-row>
@@ -87,22 +190,30 @@
                             <s-table-cell>5</s-table-cell>
                             <s-table-cell>2</s-table-cell>
                             <s-table-cell>
-                                <s-stack direction="inline" gap="base">
-                                    <s-chip>draft</s-chip>
-                                    <s-chip>pending</s-chip>
-                                </s-stack>
-                            </s-table-cell>
-                            <s-table-cell>
-                                <s-stack direction="inline" gap="base">
-                                    <s-chip>high-prio</s-chip>
-                                </s-stack>
-                            </s-table-cell>
-                            <s-table-cell>
                                 <s-badge tone="success">Active</s-badge>
                             </s-table-cell>
                             <s-table-cell>
-                                <s-button icon="delete" variant="primary" tone="critical"
-                                    accessibilityLabel="Delete Rule"></s-button>
+                                <s-button-group>
+                                    <s-button slot="secondary-actions" icon="view"
+                                        accessibilityLabel="View Rule"></s-button>
+                                    <s-button slot="primary-action" variant="primary" tone="critical" icon="delete"
+                                        accessibilityLabel="Delete Rule" commandFor="deleteRuleModal"></s-button>
+                                </s-button-group>
+                                <s-modal id="deleteRuleModal" heading="Delete rule?">
+                                    <s-stack gap="base">
+                                        <s-text>Are you sure you want to delete rule "Standard Approval"?</s-text>
+                                        <s-text tone="caution">This action cannot be undone.</s-text>
+                                    </s-stack>
+
+                                    <s-button slot="primary-action" variant="primary" tone="critical"
+                                        commandFor="deleteRuleModal" command="--hide">
+                                        Delete rule
+                                    </s-button>
+                                    <s-button slot="secondary-actions" variant="secondary" commandFor="deleteRuleModal"
+                                        command="--hide">
+                                        Cancel
+                                    </s-button>
+                                </s-modal>
                             </s-table-cell>
                         </s-table-row>
                         <s-table-row>
@@ -112,29 +223,157 @@
                             <s-table-cell>1</s-table-cell>
                             <s-table-cell>0</s-table-cell>
                             <s-table-cell>
-                                <s-stack direction="inline" gap="base">
-                                    <s-chip>ready-to-go</s-chip>
-                                </s-stack>
-                            </s-table-cell>
-                            <s-table-cell>
-                                <s-stack direction="inline" gap="base">
-                                    <s-chip>bug</s-chip>
-                                    <s-chip>rework</s-chip>
-                                </s-stack>
-                            </s-table-cell>
-                            <s-table-cell>
                                 <s-badge tone="info">In Active</s-badge>
                             </s-table-cell>
                             <s-table-cell>
-                                <s-button icon="delete" variant="primary" tone="critical"
-                                    accessibilityLabel="Delete Rule"></s-button>
+                                <s-button-group>
+                                    <s-button slot="secondary-actions" icon="view"
+                                        accessibilityLabel="View Rule"></s-button>
+                                    <s-button slot="primary-action" variant="primary" tone="critical" icon="delete"
+                                        accessibilityLabel="Delete Rule" commandFor="deleteRuleModal"></s-button>
+                                </s-button-group>
+                                <s-modal id="deleteRuleModal" heading="Delete rule?">
+                                    <s-stack gap="base">
+                                        <s-text>Are you sure you want to delete rule "Standard Approval"?</s-text>
+                                        <s-text tone="caution">This action cannot be undone.</s-text>
+                                    </s-stack>
+
+                                    <s-button slot="primary-action" variant="primary" tone="critical"
+                                        commandFor="deleteRuleModal" command="--hide">
+                                        Delete rule
+                                    </s-button>
+                                    <s-button slot="secondary-actions" variant="secondary" commandFor="deleteRuleModal"
+                                        command="--hide">
+                                        Cancel
+                                    </s-button>
+                                </s-modal>
                             </s-table-cell>
                         </s-table-row>
                     </s-table-body>
                 </s-table>
             </div>
         </s-section>
+
+        <!-- empty state -->
+        <s-section>
+            <div class="pb-3">
+                <div class="filter-container relative">
+                    <div>
+                        <s-stack direction="inline" gap="base" justifyContent="start">
+                            <s-button variant="primary">Create Rule</s-button>
+                            <s-button variant="secondary" commandFor="blockSettingModal">Block Setting</s-button>
+                        </s-stack>
+                    </div>
+                    <div>
+                        <s-stack direction="inline" gap="base" justifyContent="end">
+                            <s-button id="show-search-button" icon="search" accessibilityLabel="Search"
+                                interestFor="search-tooltip"></s-button>
+                            <s-tooltip id="search-tooltip">
+                                <s-text>Search</s-text>
+                            </s-tooltip>
+                            <s-button icon="sort" accessibilityLabel="Sort" interestFor="sort-tooltip"
+                                commandFor="sort-actions"></s-button>
+                            <s-tooltip id="sort-tooltip">
+                                <s-text>Sort</s-text>
+                            </s-tooltip>
+                            <s-popover id="sort-actions">
+                                <s-stack gap="none">
+                                    <s-box padding="small">
+                                        <s-choice-list label="Order by" name="Order by">
+                                            <s-choice value="product-title" selected>
+                                                A-Z
+                                            </s-choice>
+                                            <s-choice value="created">Z-A</s-choice>
+                                        </s-choice-list>
+                                    </s-box>
+                                </s-stack>
+                            </s-popover>
+                        </s-stack>
+                    </div>
+                    <div class="searchbar-container hidden">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="w-full">
+                                <s-search-field label="Search" labelAccessibilityVisibility="exclusive"
+                                    placeholder="Search..."></s-search-field>
+                            </div>
+                            <div class="flex gap-2">
+                                <s-button variant="primary">Search</s-button>
+                                <s-button id="cancel-search-button" variant="secondary">Cancel</s-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <s-modal id="blockSettingModal" heading="Block Setting">
+                <s-stack gap="base">
+                    <s-text-field label="Main heading" value="STANDARD SHIPPING"
+                        placeholder="Enter main heading"></s-text-field>
+                    <s-text-field label="Subtitle" value="Estimate Shipping Date:"
+                        placeholder="Enter subtitle"></s-text-field>
+                    <s-select label="Date format">
+                        <s-option value="01-01-2023" selected>01-01-2023</s-option>
+                        <s-option value="01-jan-23">01-Jan-23</s-option>
+                        <s-option value="01-jan">01-Jan</s-option>
+                    </s-select>
+                </s-stack>
+                <s-button slot="secondary-actions" commandFor="blockSettingModal" command="--hide">
+                    Close
+                </s-button>
+                <s-button slot="primary-action" variant="primary" commandFor="blockSettingModal" command="--hide">
+                    Save
+                </s-button>
+            </s-modal>
+            <div class="table-container">
+
+                <s-table class="table">
+                    <s-table-header-row>
+                        <s-table-header>Title</s-table-header>
+                        <s-table-header>Label</s-table-header>
+                        <s-table-header>Text</s-table-header>
+                        <s-table-header>Estimate Days</s-table-header>
+                        <s-table-header>Estimate Days Delay</s-table-header>
+                        <s-table-header>Status</s-table-header>
+                        <s-table-header>Actions</s-table-header>
+                    </s-table-header-row>
+                </s-table>
+            </div>
+            <s-box padding="large none">
+                <s-stack gap="small" alignItems="center">
+                    <div class="img-wrapper">
+                        <s-image src="./assets/images/icons/not-found.png" alt="No data found" inlineSize="fill"
+                            loading="eager" objectFit="contain"></s-image>
+                    </div>
+                    <s-heading>No Rules found</s-heading>
+                </s-stack>
+            </s-box>
+        </s-section>
     </s-page>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchButton =
+                document.getElementById("show-search-button");
+            const cancelButton = document.getElementById(
+                "cancel-search-button",
+            );
+            const searchbarContainer = document.querySelector(
+                ".searchbar-container",
+            );
+
+            if (searchButton && searchbarContainer) {
+                searchButton.addEventListener("click", () => {
+                    searchbarContainer.classList.remove("hidden");
+                });
+            }
+
+            if (cancelButton && searchbarContainer) {
+                cancelButton.addEventListener("click", () => {
+                    searchbarContainer.classList.add("hidden");
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>
