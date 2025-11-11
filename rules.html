@@ -112,18 +112,29 @@
                                 </s-button-group>
                                 <s-modal id="viewRuleModal" heading="View rule">
                                     <s-stack gap="base">
-                                        <s-paragraph>
-                                            <s-text type="strong">Title: </s-text>
-                                            <s-text>Urgent Review Rule</s-text>
-                                        </s-paragraph>
-                                        <s-paragraph>
-                                            <s-text type="strong">Label: </s-text>
-                                            <s-text>High Prio</s-text>
-                                        </s-paragraph>
-                                        <s-paragraph>
-                                            <s-text type="strong">Text: </s-text>
-                                            <s-text>Check for critical errors.</s-text>
-                                        </s-paragraph>
+                                        <s-stack direction="inline" justifyContent="space-between">
+                                            <s-paragraph>
+                                                <s-text type="strong">Title: </s-text>
+                                                <s-text>Urgent Review Rule</s-text>
+                                            </s-paragraph>
+                                            <s-paragraph>
+                                                <s-text type="strong">Label: </s-text>
+                                                <s-text>High Prio</s-text>
+                                            </s-paragraph>
+                                        </s-stack>
+                                        <s-stack direction="inline" justifyContent="space-between">
+                                            <s-paragraph>
+                                                <s-text type="strong">Text: </s-text>
+                                                <s-text>Check for critical errors.</s-text>
+                                            </s-paragraph>
+                                            <s-paragraph>
+                                                <s-stack gap="small" direction="inline">
+                                                    <s-text type="strong">Status: </s-text>
+                                                    <s-badge tone="success">Active</s-badge>
+                                                </s-stack>
+                                            </s-paragraph>
+                                        </s-stack>
+                                        <s-divider></s-divider>
                                         <s-paragraph>
                                             <s-text type="strong">Estimate Days: </s-text>
                                             <s-text>05</s-text>
@@ -132,16 +143,7 @@
                                             <s-text type="strong">Estimate Days Delay: </s-text>
                                             <s-text>02</s-text>
                                         </s-paragraph>
-                                        <s-paragraph>
-                                            <s-stack gap="small" direction="inline">
-                                                <s-text type="strong">Status: </s-text>
-                                                <s-badge tone="success">Active</s-badge>
-                                            </s-stack>
-                                        </s-paragraph>
-                                        <s-paragraph>
-                                            <s-text type="strong">Created at: </s-text>
-                                            <s-text>19-03-2025 01:15:21 AM</s-text>
-                                        </s-paragraph>
+                                        <s-divider></s-divider>
                                         <s-paragraph>
                                             <s-stack gap="small" direction="inline">
                                                 <s-text type="strong">Include Tags: </s-text>

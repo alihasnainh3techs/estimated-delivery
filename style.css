@@ -71,6 +71,12 @@
     }
 }
 
+@media screen and (max-width:992px) {
+    .card-header {
+        flex-wrap: wrap;
+    }
+}
+
 .filter-container {
     display: grid;
     gap: 1rem;
@@ -84,14 +90,14 @@
 }
 
 .billing-container {
-    display: grid;
+    display: flex;
+    align-items: stretch;
     gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
 }
 
 @media screen and (max-width:768px) {
     .billing-container {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 }
 
@@ -105,6 +111,12 @@
     display: table;
     width: 100%;
     min-width: 700px;
+}
+
+@media screen and (max-width:489px) {
+    .table {
+        min-width: auto;
+    }
 }
 
 .cursor-pointer {
@@ -156,16 +168,6 @@
     padding-right: 5px;
 }
 
-.pricing-card {
-    height: 260px;
-}
-
-@media screen and (max-width:440px) {
-    .pricing-card {
-        height: 285px;
-    }
-}
-
 .accordion-item {
     border-radius: 4px;
     overflow: hidden;
@@ -201,7 +203,7 @@
     width: 100%;
     background-color: white;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
 }
 
@@ -225,6 +227,22 @@
     margin-bottom: 3rem !important;
 }
 
+.mt-0 {
+    margin-top: 0 !important;
+}
+
 .invisible {
     opacity: 0;
+}
+
+.text-nowrap {
+    text-wrap: nowrap;
+}
+
+.shrink-0 {
+    flex-shrink: 0;
+}
+
+.ms-auto {
+    margin-left: auto;
 }

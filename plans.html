@@ -38,19 +38,24 @@
                 <s-divider></s-divider>
 
                 <div class="billing-container">
-                    <div>
-                        <s-box border="base" borderRadius="base" overflow="hidden" padding="none">
-                            <div class="flex justify-center"
-                                style="background-color:  #303030; width: 100%; padding: 10px 0px; color: white;">
-                                <strong>FREE</strong>
-                            </div>
+                    <div class="w-full">
+                        <s-box padding="none">
                             <s-stack gap="base" padding="base">
-                                <s-heading>
-                                    <sup>$</sup> 0
-                                    <sub class="invisible">/ Month</sub>
-                                </s-heading>
+                                <div>
+                                    <strong>FREE</strong>
+                                </div>
 
                                 <s-divider></s-divider>
+
+                                <div>
+                                    <s-heading>
+                                        <h1 class="mb-1 mt-0">$ 0</h1>
+                                    </s-heading>
+
+                                    <s-text>
+                                        per month
+                                    </s-text>
+                                </div>
 
                                 <s-paragraph>
                                     Create Only 1 Rule
@@ -63,23 +68,33 @@
                                 <s-paragraph>
                                     24 / 7 Support
                                 </s-paragraph>
-                                <s-button variant="primary">Actived</s-button>
+
+                                <s-button variant="primary" class="plan-btn">
+                                    Actived
+                                </s-button>
+
                             </s-stack>
                         </s-box>
                     </div>
-                    <div>
-                        <s-box border="base" borderRadius="base" overflow="hidden" padding="none">
-                            <div class="flex justify-center"
-                                style="background-color:  #303030; width: 100%; padding: 10px 0px; color: white;">
-                                <strong>PREMIUM</strong>
-                            </div>
+                    <s-divider direction="block" id="plansDivider"></s-divider>
+                    <div class="w-full">
+                        <s-box padding="none">
                             <s-stack gap="base" padding="base">
-                                <s-heading>
-                                    <sup>$</sup> 8
-                                    <sub>/ Month</sub>
-                                </s-heading>
+                                <div>
+                                    <strong>PREMIUM</strong>
+                                </div>
 
                                 <s-divider></s-divider>
+
+                                <div>
+                                    <s-heading>
+                                        <h1 class="mb-1 mt-0">$ 8</h1>
+                                    </s-heading>
+
+                                    <s-text>
+                                        per month
+                                    </s-text>
+                                </div>
 
                                 <s-paragraph>
                                     Create Unlimited Rule
@@ -93,7 +108,7 @@
                                     24 / 7 Support
                                 </s-paragraph>
 
-                                <s-button variant="secondary">Choose Plan</s-button>
+                                <s-button variant="secondary" class="plan-btn">Choose Plan</s-button>
                             </s-stack>
                         </s-box>
                     </div>
@@ -104,16 +119,137 @@
                 <s-paragraph>
                     <s-text color="subdued">
                         <p style="text-align: center; margin: 0;">
-                            Cancel at any time | Trusted by top brands running on Shopify & Shopify Plus | 24*7 Live
-                            customer
-                            support.
+                            <small>
+                                Cancel at any time | Trusted by top brands running on Shopify & Shopify Plus | 24*7 Live
+                                customer
+                                support.
+                            </small>
                         </p>
                     </s-text>
                 </s-paragraph>
             </s-stack>
         </s-section>
+
+        <s-section heading="Need Help?">
+            <div class="products-container">
+                <div>
+                    <s-box padding="small" background="white" border="base" borderRadius="base">
+                        <s-stack gap="base">
+                            <div class="flex justify-between items-start gap-2 card-header">
+                                <div class="flex gap-2 items-center">
+                                    <div class="shrink-0">
+                                        <s-thumbnail src="assets/images/icons/05.png" alt="Product Manager"
+                                            size="base"></s-thumbnail>
+                                    </div>
+                                    <div>
+                                        <s-heading>Product Manager</s-heading>
+                                        <s-text color="subdued">
+                                            <small>Customer Success Team @H3Techs</small>
+                                        </s-text>
+                                    </div>
+                                </div>
+                                <div class="ms-auto">
+                                    <s-button variant="primary" icon="desktop" accessibilityLabel="Demo"
+                                        class="text-nowrap">
+                                        Request a demo
+                                    </s-button>
+                                </div>
+                            </div>
+                            <s-divider></s-divider>
+                            <s-stack gap="base">
+                                <s-heading>Get your quesitons answered on a live 1:1 demo</s-heading>
+                                <s-paragraph>
+                                    Our dedicated support team will provide a live demo within 1-2 business days—
+                                    completely free of charge and delivered with the highest level of
+                                    professionalism.
+                                </s-paragraph>
+                                <s-unordered-list>
+                                    <s-list-item>
+                                        Provide efficient customer loyalty operation solutions for your
+                                        brand.
+                                    </s-list-item>
+                                    <s-list-item>
+                                        Optimize the appearance of the H3Techs widget to match your
+                                        brand.
+                                    </s-list-item>
+                                    <s-list-item>
+                                        H3Techs expert will respond to your request within 1-2
+                                        days.
+                                    </s-list-item>
+                                </s-unordered-list>
+                            </s-stack>
+                        </s-stack>
+                    </s-box>
+                </div>
+                <div>
+                    <s-box padding="small" background="white" border="base" borderRadius="base">
+                        <s-stack gap="base">
+                            <div class="flex justify-between items-start gap-2 card-header">
+                                <div class="flex gap-2 items-center">
+                                    <div class="shrink-0">
+                                        <s-thumbnail src="assets/images/icons/05.png" alt="Product Manager"
+                                            size="base"></s-thumbnail>
+                                    </div>
+                                    <div>
+                                        <s-heading>Product Manager</s-heading>
+                                        <s-text color="subdued">
+                                            <small>Customer Success Team @H3Techs</small>
+                                        </s-text>
+                                    </div>
+                                </div>
+                                <div class="ms-auto">
+                                    <s-button variant="primary" icon="chat" accessibilityLabel="Chat"
+                                        class="text-nowrap">
+                                        Chat with us
+                                    </s-button>
+                                </div>
+                            </div>
+                            <s-divider></s-divider>
+                            <s-stack gap="base">
+                                <s-heading>Larger business or need some discount?</s-heading>
+                                <s-paragraph>
+                                    Ready to get started with H3 Estimated Delivery? We're confident we can deliver a
+                                    solution
+                                    tailored
+                                    to your needs.
+                                </s-paragraph>
+                                <s-unordered-list>
+                                    <s-list-item>
+                                        Get personalized recommendations based on your business
+                                        needs.
+                                    </s-list-item>
+                                    <s-list-item>
+                                        Quickly resolve any technical issues with real-time
+                                        guidance.
+                                    </s-list-item>
+                                    <s-list-item>
+                                        Chat support available for both new and existing customers.
+                                    </s-list-item>
+                                </s-unordered-list>
+                            </s-stack>
+                        </s-stack>
+                    </s-box>
+                </div>
+            </div>
+        </s-section>
+
     </s-page>
 
+    <script>
+        window.addEventListener("resize", (event) => {
+            if (window.innerWidth <= 768)
+                document.querySelector("#plansDivider").removeAttribute("direction");
+            else
+                document.querySelector("#plansDivider").setAttribute("direction", "block");
+        })
+        const planButtons = document.querySelectorAll('.plan-btn');
+
+        planButtons.forEach(button => {
+            button.shadowRoot.querySelector("button").style.width = "100%";
+
+        });
+
+    </script>
 </body>
 
 </html>
